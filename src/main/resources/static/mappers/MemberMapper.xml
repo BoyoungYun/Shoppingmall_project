@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.inha.mapper.MemberMapper">
+<insert id="addMem">
+	insert into final_member values(#{name}, #{id}, #{pw}, #{mail})
+</insert>
+<select id="memLogin" resultType="kr.ac.inha.dto.MemberDto">
+	select name, id, pw, mail from final_member where id = #{id} and pw = #{pw}
+</select>
+<update id="memModify">
+	update final_member set name=#{name}, pw=#{pw}, mail=#{mail} where id=#{id}
+</update>
+<delete id="memDelete">
+	delete from final_member where id=#{id}
+</delete>
+</mapper>

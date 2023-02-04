@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.inha.mapper.AdminMapper">
+<select id="goodslist" resultType="kr.ac.inha.dto.AdminDto">
+ select
+  id, name, src, cost, size, count
+    from final_clothes
+        order by id
+</select>
+<update id="addThings">
+	update final_clothes set size=#{size}, count=#{count} where id=#{id}
+</update>
+<insert id="cart">
+	insert into final_cart values(#{id}, #{name}, #{src}, #{cost}, #{size}, #{count})
+</insert>
+<select id="cartlist" resultType="kr.ac.inha.dto.AdminDto">
+ select
+  id, name, src, cost, size, count
+    from final_cart
+        order by id
+</select>
+</mapper>

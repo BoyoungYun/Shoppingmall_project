@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.inha.mapper.BoardMapper">
+<select id="boardlist" resultType="kr.ac.inha.dto.BoardDto">
+ select
+  id, writer, title, content, regdate
+    from final_board
+        order by id
+</select>
+<update id="updateboard">
+	update final_board set content=#{content}, where id=#{id}
+</update>
+<insert id="inputboard">
+	insert into final_board values(#{id}, #{writer}, #{title}, #{content}, NOW())
+</insert>
+</mapper>
